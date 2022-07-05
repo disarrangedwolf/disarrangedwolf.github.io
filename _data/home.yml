@@ -2,8 +2,6 @@ navbar_entries:
   - title: about
     url: about
 
-  - title: blog
-    url: blog
 
   - title: Linktree
     url: https://linktr.ee/disarrangedwolf
@@ -59,9 +57,6 @@ misc_entries:
   - title: and you can add data in _data/home.yml
     url: false
 
-  - title: Blog posts
-    post_list: true
-    url: false
 
   - title: moonwalk on the Internet
     url: false
