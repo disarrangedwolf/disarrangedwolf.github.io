@@ -25,9 +25,6 @@ export const siteConfig = {
       'Full Stack Development',
     ],
   },
-   contact: {
-    email: 'wolf@disarrangedwolf.com',
-  },
   socialLinks: [
     { label: 'GitHub', href: 'https://github.com/disarrangedwolf' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
