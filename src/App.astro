@@ -1,0 +1,328 @@
+---
+import Certifications from './components/Certifications.astro';
+import Methodology from './components/Methodology.astro';
+import Testimonials from './components/Testimonials.astro';
+import Toolstack from './components/Toolstack.astro';
+import MaterialIcon from './components/MaterialIcon.astro';
+import { siteConfig } from './config/site';
+
+const {
+  brand,
+  navLinks,
+  contact,
+  socialLinks,
+  hero,
+  sections,
+  services,
+  projects,
+  footer,
+} = siteConfig;
+---
+
+<div class="min-h-screen terminal-scroll overflow-x-hidden relative bg-[#0D1117]">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#0D1117] border-b border-gray-800 reveal-static" data-reveal style="--reveal-delay: 40ms">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="site-logo flex items-center gap-2 text-[#00FF00] font-mono" aria-label={`${brand.name} home`}>
+        <span class="font-bold tracking-tight">{brand.logoText}</span>
+      </a>
+      <nav aria-label="Primary navigation" class="hidden md:flex gap-6 font-mono text-sm shadow-sm backdrop-blur-none">
+        {navLinks.map((item) => (
+          <a href={item.href} class="text-gray-300 hover:text-[#00FF00] transition-colors drop-shadow-md">
+            <span class="text-gray-500 mr-1" aria-hidden="true">~/</span>{item.label.toLowerCase()}
+          </a>
+        ))}
+      </nav>
+      <div class="md:hidden">
+        <button type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false" data-mobile-menu-button class="flex h-10 w-10 items-center justify-center border border-gray-800 text-[#00FF00] transition-colors hover:border-[#00FF00]/50 hover:bg-[#00FF00]/10">
+          <MaterialIcon name="menu" class="text-2xl" aria-hidden="true" data-menu-icon />
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu class="mobile-menu-panel fixed inset-x-0 bottom-0 top-16 z-40 hidden border-t border-gray-800 px-6 py-6 font-mono text-sm md:hidden">
+    <div class="mx-auto flex h-full max-w-7xl flex-col justify-between">
+      <div class="flex flex-col gap-3">
+        {navLinks.map((item) => (
+          <a href={item.href} class="border-b border-gray-900 py-3 text-gray-300 hover:text-[#00FF00] transition-colors" data-mobile-menu-link>
+            <span class="text-gray-500 mr-1" aria-hidden="true">~/</span>{item.label.toLowerCase()}
+          </a>
+        ))}
+      </div>
+
+      <div class="border-t border-gray-800 pt-5 text-xs uppercase tracking-widest text-gray-300">
+        <p class="mb-4 text-gray-500">secure channels</p>
+        <div class="flex flex-wrap gap-4">
+          <a href={`mailto:${contact.email}`} class="hover:text-[#00FF00] transition-colors" data-mobile-menu-link>EMAIL</a>
+          {socialLinks.map((link) => (
+            <a href={link.href} class="hover:text-[#00FF00] transition-colors" data-mobile-menu-link>{link.label.toUpperCase()}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const menuButton = document.querySelector('[data-mobile-menu-button]');
+    const mobileMenu = document.querySelector('[data-mobile-menu]');
+    const menuIcon = document.querySelector('[data-menu-icon]');
+
+    const setMenuOpen = (isOpen) => {
+      mobileMenu?.classList.toggle('hidden', !isOpen);
+      menuButton?.setAttribute('aria-expanded', String(isOpen));
+      menuButton?.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (menuIcon) {
+        menuIcon.textContent = isOpen ? 'close' : 'menu';
+      }
+    };
+
+    menuButton?.addEventListener('click', () => {
+      setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
+
+    document.querySelectorAll('[data-mobile-menu-link]').forEach((link) => {
+      link.addEventListener('click', () => setMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    });
+
+    const revealElements = Array.from(document.querySelectorAll('[data-reveal]'));
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach((element) => element.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+    }
+  </script>
+
+  <main id="main-content" class="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-0 space-y-32">
+    <section aria-labelledby="hero-title" class="relative pt-20 lg:pt-32 flex flex-col items-start min-h-[60vh] justify-center overflow-hidden">
+      <div class="relative z-10">
+        <p class="font-mono text-[#00FF00] mb-4 reveal-static" data-reveal style="--reveal-delay: 120ms">
+          &gt;&nbsp;<span data-terminal-typewriter data-terminal-sequence={JSON.stringify(hero.terminalSequence)}>{hero.command}</span><span aria-hidden="true" class="inline-block w-2 h-5 ml-2 align-[-3px] bg-[#00FF00] animate-cursor-blink"></span>
+        </p>
+        <h1 id="hero-title" class="max-w-full text-4xl sm:text-5xl md:text-7xl font-mono text-white mb-6 uppercase tracking-normal leading-[0.95] reveal-static" data-reveal style="--reveal-delay: 220ms">
+          {hero.title} <br />
+          <span class="text-[#00FF00] drop-shadow-[0_0_10px_rgba(0,255,0,0.4)]">{hero.highlightedTitle}</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl font-sans mb-10 leading-relaxed reveal-static" data-reveal style="--reveal-delay: 340ms">
+          {hero.description}
+        </p>
+        <div class="flex flex-wrap gap-4 font-mono group reveal-static" data-reveal style="--reveal-delay: 460ms">
+          <a href={hero.primaryCta.href} class="relative px-6 py-3 bg-[#00FF00]/10 text-[#00FF00] border border-[#00FF00]/50 hover:bg-[#00FF00]/20 transition-all flex items-center gap-2">
+            {hero.primaryCta.label}
+            <span aria-hidden="true" class="absolute inset-x-0 bottom-0 h-px bg-[#00FF00] origin-left scale-x-0 group-hover:scale-x-100 transition-transform"></span>
+          </a>
+          <a href={hero.secondaryCta.href} class="px-6 py-3 text-gray-300 border border-gray-800 hover:border-gray-600 hover:text-gray-200 transition-colors">
+            {hero.secondaryCta.label}
+          </a>
+        </div>
+        <div class="mt-8 font-mono reveal-static" data-reveal style="--reveal-delay: 560ms">
+          <dl class="flex flex-wrap gap-x-8 gap-y-4 text-xs">
+            {hero.proof.stats.map((stat) => (
+              <div class="min-w-[9rem]">
+                <dt class="text-gray-500">&gt; {stat.label}</dt>
+                <dd class="mt-1 text-2xl text-gray-100">
+                  <span data-count-target={stat.value} data-count-suffix={stat.suffix}>0{stat.suffix}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title" class="scroll-mt-32">
+      <div>
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+          <h2 id="services-title" class="text-3xl text-white font-mono uppercase">{sections.services.heading}</h2>
+          <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+        </div>
+        <div class="service-grid grid md:grid-cols-2 gap-0">
+          {services.map((service, i) => (
+            <article class="service-grid-item p-8 lg:p-10 min-h-[18rem] transition-colors group reveal-lift hover:bg-[#161B22]/35" data-reveal style={`--reveal-delay: ${i * 90}ms`}>
+              <div class="mb-8 flex h-12 w-12 items-center justify-start">
+                <MaterialIcon name={service.icon} class="text-4xl text-gray-200 group-hover:text-[#00FF00] transition-colors" aria-hidden="true" />
+              </div>
+              <h3 class="text-xl text-gray-200 mb-3 font-mono">{service.title}</h3>
+              <p class="text-sm text-gray-300 font-sans leading-relaxed">{service.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Methodology />
+    <Certifications />
+    <Toolstack />
+
+    <section id="projects" aria-labelledby="projects-title" class="scroll-mt-32">
+      <div>
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+          <h2 id="projects-title" class="text-3xl text-white font-mono uppercase">{sections.projects.heading}</h2>
+          <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+        </div>
+        <div class="space-y-8">
+          {projects.map((project, i) => (
+            <article class="border-l-2 border-gray-800 pl-6 py-2 hover:border-[#00FF00] transition-colors reveal-static" data-reveal="left" style={`--reveal-delay: ${i * 110}ms`}>
+              <p class="text-xs text-[#00FF00] font-mono mb-2 uppercase tracking-widest">{project.category}</p>
+              <h3 class="text-2xl text-gray-200 font-mono mb-3">{project.name}</h3>
+              <p class="text-gray-300 font-sans mb-4 max-w-3xl">{project.desc}</p>
+              <div class="flex gap-3 font-mono text-xs text-gray-300">
+                {project.tech.map((t) => (
+                  <span class="px-2 py-1 bg-gray-800/50 border border-gray-700/50 rounded">{t}</span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <Testimonials />
+
+    <section id="contact" aria-labelledby="contact-title" class="scroll-mt-32 pb-20">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+          <h2 id="contact-title" class="text-3xl text-white font-mono uppercase">{sections.contact.heading}</h2>
+          <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+        </div>
+        <div class="p-8 border border-gray-800 bg-[#161B22]/50 rounded-sm relative reveal-static" data-reveal>
+          <div aria-hidden="true" class="absolute top-0 left-0 w-2 h-2 border-t border-l border-[#00FF00]"></div>
+          <div aria-hidden="true" class="absolute top-0 right-0 w-2 h-2 border-t border-r border-[#00FF00]"></div>
+          <div aria-hidden="true" class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-[#00FF00]"></div>
+          <div aria-hidden="true" class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-[#00FF00]"></div>
+
+          <form class="space-y-6" aria-describedby="contact-help">
+            <div>
+              <label for="target-email" class="block font-mono text-xs text-gray-300 mb-2">{contact.emailLabel}</label>
+              <input id="target-email" name="email" type="email" autocomplete="email" required class="w-full bg-[#0D1117] border border-gray-800 p-3 font-mono text-sm text-gray-200 focus:outline-none focus:border-[#00FF00]/50 transition-colors" placeholder={contact.emailPlaceholder} />
+            </div>
+            <div>
+              <label for="payload" class="block font-mono text-xs text-gray-300 mb-2">{contact.messageLabel}</label>
+              <textarea id="payload" name="message" rows="4" required class="w-full bg-[#0D1117] border border-gray-800 p-3 font-mono text-sm text-gray-200 focus:outline-none focus:border-[#00FF00]/50 transition-colors resize-none" placeholder={contact.messagePlaceholder}></textarea>
+            </div>
+            <p id="contact-help" class="text-xs text-gray-300">{contact.formHelp}</p>
+            <button type="submit" class="w-full py-3 bg-[#00FF00]/10 text-[#00FF00] border border-[#00FF00]/50 hover:bg-[#00FF00]/20 font-mono transition-colors uppercase tracking-widest text-sm">{contact.submitLabel}</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="border-t border-gray-900 bg-[#0D1117] py-3 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-300">
+        <p>{footer.status} // 0x{new Date().getFullYear().toString(16).toUpperCase()}</p>
+        <div class="flex gap-4">
+          <a href={`mailto:${contact.email}`} class="hover:text-[#00FF00] transition-colors">EMAIL</a>
+          {socialLinks.map((link) => (
+            <a href={link.href} class="hover:text-[#00FF00] transition-colors">{link.label.toUpperCase()}</a>
+          ))}
+        </div>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script is:inline>
+  (() => {
+    const typewriter = document.querySelector('[data-terminal-typewriter]');
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (typewriter) {
+      const parsedSequence = JSON.parse(typewriter.getAttribute('data-terminal-sequence') || '[]');
+      const sequence = Array.isArray(parsedSequence) ? parsedSequence : [];
+
+      if (motionQuery.matches || !sequence.length) {
+        typewriter.textContent = sequence[sequence.length - 1] || typewriter.textContent;
+      } else {
+        typewriter.textContent = '';
+
+        const typeLine = (lineIndex = 0, charIndex = 0) => {
+          const line = sequence[lineIndex];
+
+          if (charIndex <= line.length) {
+            typewriter.textContent = line.slice(0, charIndex);
+            window.setTimeout(() => typeLine(lineIndex, charIndex + 1), 42);
+            return;
+          }
+
+          if (lineIndex < sequence.length - 1) {
+            window.setTimeout(() => typeLine(lineIndex + 1, 0), 520);
+            return;
+          }
+
+          typewriter.textContent = line;
+        };
+
+        window.setTimeout(() => typeLine(), 250);
+      }
+    }
+
+    const counters = Array.from(document.querySelectorAll('[data-count-target]'));
+    if (!counters.length) return;
+
+    const setCounterValue = (counter, value) => {
+      const suffix = counter.getAttribute('data-count-suffix') ?? '';
+      counter.textContent = `${value}${suffix}`;
+    };
+
+    const completeCounter = (counter) => {
+      const target = Number(counter.getAttribute('data-count-target') ?? 0);
+      setCounterValue(counter, target);
+    };
+
+    const animateCounter = (counter) => {
+      if (counter.getAttribute('data-count-complete') === 'true') return;
+      counter.setAttribute('data-count-complete', 'true');
+
+      const target = Number(counter.getAttribute('data-count-target') ?? 0);
+      const duration = 900;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const easedProgress = 1 - Math.pow(1 - progress, 3);
+        setCounterValue(counter, Math.round(target * easedProgress));
+
+        if (progress < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          completeCounter(counter);
+        }
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    if (motionQuery.matches || !('IntersectionObserver' in window)) {
+      counters.forEach(completeCounter);
+      return;
+    }
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach((counter) => counterObserver.observe(counter));
+  })();
+</script>

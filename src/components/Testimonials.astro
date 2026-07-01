@@ -1,0 +1,45 @@
+---
+import { siteConfig } from '../config/site';
+
+const { sections, testimonials } = siteConfig;
+const testimonialSection = sections.testimonials;
+---
+
+<section id="redacted-testimonials" aria-labelledby="testimonials-title" class="scroll-mt-32">
+  <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+    <h2 id="testimonials-title" class="text-3xl text-white font-mono uppercase">{testimonialSection.heading}</h2>
+    <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+  </div>
+
+  <div class="border border-gray-800 bg-[#05080D]/80 reveal-static" data-reveal>
+    <div class="flex flex-col gap-2 border-b border-gray-800 bg-[#161B22]/60 px-4 py-3 font-mono text-xs text-gray-300 sm:flex-row sm:items-center sm:justify-between">
+      <span class="uppercase tracking-widest text-[#00FF00]">{testimonialSection.eyebrow}</span>
+      <span>{testimonialSection.note}</span>
+    </div>
+
+    <div class="grid gap-4 p-4 md:grid-cols-3 md:p-6">
+      {testimonials.map((testimonial, i) => (
+        <figure class="group relative flex min-h-full flex-col justify-between overflow-hidden border border-gray-800 bg-[#0D1117] p-5 transition-colors hover:border-[#00FF00]/40 reveal-lift" data-reveal style={`--reveal-delay: ${i * 100}ms`}>
+          <blockquote class="relative z-10">
+            <div class="mb-5 flex items-center justify-between gap-4 font-mono text-xs">
+              <div class="flex gap-1 text-[#00FF00]" aria-label={`${testimonial.rating} out of 5 rating`}>
+                {Array.from({ length: testimonial.rating }).map(() => (
+                  <span aria-hidden="true">★</span>
+                ))}
+              </div>
+              <span class="border border-[#00FF00]/30 px-2 py-1 text-[10px] uppercase tracking-widest text-[#00FF00]">verified</span>
+            </div>
+            <p class="text-sm leading-relaxed text-gray-300">
+              {testimonial.quote}
+            </p>
+          </blockquote>
+
+          <figcaption class="relative z-10 mt-8 border-t border-gray-900 pt-4 font-mono">
+            <p class="text-sm text-gray-200">{testimonial.attribution}</p>
+            <p class="mt-1 text-xs uppercase tracking-widest text-gray-500">{testimonial.sector}</p>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

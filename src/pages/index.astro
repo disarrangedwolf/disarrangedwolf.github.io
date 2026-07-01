@@ -1,0 +1,70 @@
+---
+import App from '../App.astro';
+import '../index.css';
+import { siteConfig } from '../config/site';
+
+const { brand, contact, seo } = siteConfig;
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': siteConfig.jsonLd.type,
+  name: brand.name,
+  url: canonicalUrl,
+  email: contact.email,
+  description: seo.description,
+  areaServed: siteConfig.jsonLd.areaServed,
+  serviceType: siteConfig.jsonLd.serviceType,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content={seo.description}
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content={seo.author} />
+    <meta
+      name="keywords"
+      content={seo.keywords}
+    />
+    <meta name="theme-color" content={seo.themeColor} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content={seo.siteName} />
+
+    <meta name="twitter:card" content={seo.twitterCard} />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <noscript>
+      <style>
+        [style*="opacity:0"],
+        [style*="opacity: 0"] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+    <title>{seo.title}</title>
+  </head>
+  <body>
+    <App />
+  </body>
+</html>

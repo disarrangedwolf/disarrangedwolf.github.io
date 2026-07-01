@@ -1,155 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio — Dark Tech Style</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#09090b',     /* Ultra-dark canvas background */
-                        darkCard: '#141417',   /* Slightly lighter dark for components */
-                        techBorder: '#27272a', /* Sharp IDE-style borders */
-                    },
-                    animation: {
-                        'infinite-scroll': 'infinite-scroll 25s linear infinite',
-                    },
-                    keyframes: {
-                        'infinite-scroll': {
-                            from { transform: translateX(0); }
-                            to { transform: translateX(-50%); }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Smooth scrolling for the modern portfolio feel */
-        html { scroll-behavior: smooth; }
-        /* Custom subtle scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #09090b; }
-        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 3px; }
-    </style>
-</head>
-<body class="bg-darkBg text-zinc-100 font-sans antialiased selection:bg-zinc-700 selection:text-white">
+# NULLTRACE - Astro Security Consultant Theme
 
-    <header class="w-full max-w-5xl mx-auto px-6 py-8 flex justify-between items-center border-b border-techBorder/50">
-        <a href="#" class="text-sm font-bold tracking-wider uppercase text-zinc-400 hover:text-white transition">YOURNAME</a>
-        <nav class="flex gap-6 text-sm text-zinc-400">
-            <a href="#projects" class="hover:text-white transition">Projects</a>
-            <a href="https://github.com" target="_blank" class="hover:text-white transition">GitHub</a>
-            <a href="#contact" class="hover:text-white transition">Contact</a>
-        </nav>
-    </header>
+[![NULLTRACE theme preview](./public/preview.webp)](https://nulltrace-two.vercel.app/)
 
-    <main class="max-w-5xl mx-auto px-6 pt-20 pb-12">
-        <div class="max-w-2xl">
-            <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-3">// Core Focus</p>
-            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                Systems Engineer & Full-Stack Developer.
-            </h1>
-            <p class="text-lg text-zinc-400 leading-relaxed mb-8">
-                I build high-throughput backends, secure trade infrastructures, and custom UI layers. Server-synced, optimized for high load, and battle-tested against exploits.
-            </p>
-            
-            <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 text-xs font-mono bg-darkCard border border-techBorder rounded text-zinc-300">TypeScript</span>
-                <span class="px-3 py-1 text-xs font-mono bg-darkCard border border-techBorder rounded text-zinc-300">Go / Lua</span>
-                <span class="px-3 py-1 text-xs font-mono bg-darkCard border border-techBorder rounded text-zinc-300">React</span>
-                <span class="px-3 py-1 text-xs font-mono bg-darkCard border border-techBorder rounded text-zinc-300">PostgreSQL</span>
-                <span class="px-3 py-1 text-xs font-mono bg-darkCard border border-techBorder rounded text-zinc-300">Docker</span>
-            </div>
-        </div>
-    </main>
+[![Astro 6](https://img.shields.io/badge/Astro-6-FF5D01?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build/)
+[![Tailwind CSS 4](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Configured-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-84cc16?style=for-the-badge)](./LICENSE)
 
-    <div class="w-full overflow-hidden bg-darkCard border-y border-techBorder py-4 my-12">
-        <div class="flex whitespace-nowrap w-[200%] animate-infinite-scroll text-sm font-mono tracking-wider text-zinc-500 uppercase">
-            <span class="mx-4">⚡ Real-time Architecture</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🛠️ Zero-Dupe Inventories</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🎯 Custom Canvas HUDs</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🔒 Atomic Database State</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">⚡ Real-time Architecture</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🛠️ Zero-Dupe Inventories</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🎯 Custom Canvas HUDs</span> <span class="text-zinc-700">•</span>
-            <span class="mx-4">🔒 Atomic Database State</span> <span class="text-zinc-700">•</span>
-        </div>
-    </div>
+**Preview:** [nulltrace-two.vercel.app](https://nulltrace-two.vercel.app/)
 
-    <section id="projects" class="max-w-5xl mx-auto px-6 py-12">
-        <div class="border-b border-techBorder pb-4 mb-12">
-            <h2 class="text-xs font-mono uppercase tracking-widest text-zinc-500">01 / Featured Work</h2>
-            <p class="text-xl text-zinc-300 mt-1">Built for performance, not just demos.</p>
-        </div>
+NULLTRACE is a dark, terminal-inspired Astro theme for security consultants, penetration testers, incident response specialists, and boutique cybersecurity studios.
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <div class="group relative bg-darkCard border border-techBorder rounded p-6 hover:border-zinc-500 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-mono text-zinc-600 group-hover:text-zinc-400 transition">// 01</span>
-                        <div class="flex gap-2">
-                            <span class="px-2 py-0.5 text-[10px] font-mono bg-zinc-800 border border-techBorder text-zinc-400 rounded">Go</span>
-                            <span class="px-2 py-0.5 text-[10px] font-mono bg-zinc-800 border border-techBorder text-zinc-400 rounded">gRPC</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Atomic Inventory Core</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-                        A server-side inventory abstraction layer designed to prevent state desyncs and item duplication exploits entirely. Features custom item properties and thread-safe persistence.
-                    </p>
-                </div>
-                <div class="text-xs font-mono text-zinc-500 group-hover:text-white transition flex items-center gap-1">
-                    View Project <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-            </div>
+It is built as a single-page landing portfolio with strong technical atmosphere, accessible navigation, crawlable content, and production-ready SEO defaults.
 
-            <div class="group relative bg-darkCard border border-techBorder rounded p-6 hover:border-zinc-500 transition-all duration-300 flex flex-col justify-between">
-                <div>
-                    <div class="flex justify-between items-start mb-6">
-                        <span class="text-xs font-mono text-zinc-600 group-hover:text-zinc-400 transition">// 02</span>
-                        <div class="flex gap-2">
-                            <span class="px-2 py-0.5 text-[10px] font-mono bg-zinc-800 border border-techBorder text-zinc-400 rounded">React</span>
-                            <span class="px-2 py-0.5 text-[10px] font-mono bg-zinc-800 border border-techBorder text-zinc-400 rounded">Canvas</span>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Minimal Tactical HUD</h3>
-                    <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-                        A highly optimized game user interface rendering critical status indicators at a rock-solid 60 FPS. Zero layout shifts, with modular container resizing.
-                    </p>
-                </div>
-                <div class="text-xs font-mono text-zinc-500 group-hover:text-white transition flex items-center gap-1">
-                    View Project <span class="transform group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-            </div>
+## Features
 
-        </div>
-    </section>
+- Terminal-inspired landing page for cybersecurity professionals
+- Responsive fixed header with full-screen mobile menu
+- Hero section with animated terminal typewriter sequence and clear CTAs
+- Hero social-proof row with animated terminal-style impact counters
+- Services section for penetration testing, incident response, auditing, and infrastructure security
+- Methodology timeline for explaining engagement flow
+- Certification audit log for client trust signals
+- Project/case-study highlights
+- Contact form shell ready to connect to your preferred backend
+- Accessible skip link, focus states, landmarks, labels, and reduced-motion fallbacks
+- Server-rendered Astro output for better SEO and no-JS readability
+- Open Graph, Twitter, canonical, robots, theme color, and JSON-LD structured data defaults
+- Tailwind CSS 4 styling through the Vite plugin
+- Native Astro components with self-hosted, subset Google Material Symbols icons
 
-    <footer id="contact" class="max-w-5xl mx-auto px-6 pt-20 pb-12 border-t border-techBorder/50 mt-20">
-        <div class="md:flex md:justify-between md:items-end">
-            <div class="max-w-md mb-8 md:mb-0">
-                <h2 class="text-xl font-bold text-white mb-2">Need an engineering overhaul?</h2>
-                <p class="text-sm text-zinc-400 leading-relaxed">
-                    Custom mechanics, optimized backend infrastructure, or custom web integration layers — let's build something solid.
-                </p>
-            </div>
-            
-            <div class="text-left md:text-right font-mono text-sm">
-                <p class="text-zinc-500 mb-1">Get in touch</p>
-                <a href="mailto:your.email@example.com" class="text-white hover:underline block mb-1">your.email@example.com</a>
-                <a href="https://github.com" target="_blank" class="text-zinc-400 hover:text-white block">github.com/yourusername</a>
-            </div>
-        </div>
+## Tech Stack
 
-        <div class="flex justify-between items-center text-xs font-mono text-zinc-600 mt-16 pt-4 border-t border-techBorder/30">
-            <span>© 2026 YOURNAME</span>
-            <span>Code by day, Code by night</span>
-        </div>
-    </footer>
+- Astro 6
+- TypeScript configuration for type-checking
+- Tailwind CSS 4
 
-</body>
-</html>
+## Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the local development server:
+
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+Type-check the project:
+
+```bash
+npm run lint
+```
+
+## Theme Setup
+
+Before publishing, update the project-specific values:
+
+- `site` in `astro.config.mjs`
+- Brand, SEO metadata, JSON-LD values, navigation, hero copy, contact details, social links, services, methodology, tool inventory, projects, and footer text in `src/config/site.ts`
+- Canonical behavior in `src/pages/index.astro`
+- Icon names in `src/config/site.ts`
+- Contact form handling in the contact section
+- `public/favicon.svg` if you want a custom brand mark
+
+The current placeholder production URL is:
+
+```txt
+https://nulltrace-two.vercel.app
+```
+
+Replace it with your real deployment domain before publishing.
+
+## SEO
+
+The theme includes:
+
+- Server-rendered page content
+- Canonical URL
+- Meta title and description
+- Keyword meta
+- Robots meta
+- Open Graph tags
+- Twitter card tags
+- JSON-LD structured data for a professional service
+- Theme color
+- SVG favicon
+- No-JS visibility fallback for animated content
+
+Main SEO files:
+
+- `src/pages/index.astro`
+- `astro.config.mjs`
+- `public/favicon.svg`
+
+## Accessibility
+
+The theme includes:
+
+- Semantic `header`, `main`, `section`, `article`, `footer`, and labelled navigation
+- Skip link for keyboard users
+- Visible focus rings
+- Mobile menu semantics with `aria-expanded`, `aria-controls`, and Escape-to-close behavior
+- Body scroll lock while the mobile menu is open
+- Labelled contact form fields with autocomplete and required states
+- Decorative UI elements marked with `aria-hidden`
+- Reduced-motion CSS support
+- No-JS fallback so animated SSR content remains visible
+
+## Content Notes
+
+The included copy is starter/demo content. Replace it with real services, project summaries, tools, contact details, and social profiles before publishing.
+
+The contact form is a theme shell and does not submit anywhere yet. Connect it to your preferred form provider, server action, or API endpoint.
+
+## Project Structure
+
+```txt
+src/
+  App.astro
+  index.css
+  config/
+    site.ts
+  pages/
+    index.astro
+  components/
+    Certifications.astro
+    MaterialIcon.astro
+    Methodology.astro
+    Testimonials.astro
+    Toolstack.astro
+public/
+  favicon.svg
+  preview.webp
+  fonts/
+    material-symbols-outlined-200.ttf
+```
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release notes.
+
+## Publishing Checklist
+
+- Replace `https://nulltrace-two.vercel.app` with your real domain if you fork the theme
+- Replace `hello@nulltrace.security` in `src/config/site.ts`
+- Replace GitHub and LinkedIn placeholder URLs
+- Connect or remove the contact form
+- Update demo projects and services
+- Update demo certification entries
+- Update anonymized testimonials
+- Update structured data to match the real business/person
+- Run `npm run lint`
+- Run `npm run build`
+- Run `npm audit --omit=dev`
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
