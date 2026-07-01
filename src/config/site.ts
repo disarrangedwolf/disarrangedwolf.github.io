@@ -1,16 +1,16 @@
 export const siteConfig = {
   brand: {
-    name: 'NULLTRACE',
+    name: 'DisarrangedWolf',
     logoText: './NULLTRACE',
   },
   seo: {
-    title: 'NULLTRACE - Security Consultant Portfolio Theme',
+    title: 'Jr Fullstack developer and Cyber Security Analyst',
     description:
       'A dark terminal-inspired Astro theme for security consultants, penetration testers, and incident response specialists.',
-    author: 'NULLTRACE',
+    author: 'DisarrangedWolf',
     keywords:
       'security consultant portfolio, penetration testing, incident response, Astro theme, cybersecurity website',
-    siteName: 'NULLTRACE',
+    siteName: 'DisarrangedWolf',
     themeColor: '#0D1117',
     twitterCard: 'summary',
   },
