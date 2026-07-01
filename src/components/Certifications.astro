@@ -1,0 +1,33 @@
+---
+import { siteConfig } from '../config/site';
+
+const { sections, certifications } = siteConfig;
+const certSection = sections.certifications;
+---
+
+<section id="certifications" aria-labelledby="certifications-title" class="scroll-mt-32">
+  <div class="flex items-center gap-4 mb-12 reveal-heading" data-reveal="left">
+    <h2 id="certifications-title" class="text-3xl text-white font-mono uppercase">{certSection.heading}</h2>
+    <div aria-hidden="true" class="h-px bg-gray-800 flex-1"></div>
+  </div>
+
+  <div class="font-mono">
+    {certifications.map((cert, i) => (
+      <article class="grid gap-2 border-t border-gray-900 py-3 first:border-t-0 md:grid-cols-[116px_1fr] md:gap-4 reveal-static" data-reveal="left" style={`--reveal-delay: ${i * 80}ms`}>
+        <time datetime={cert.issued} class="text-xs text-gray-300">[{cert.issued}]</time>
+        <div>
+          <p class="text-sm text-gray-200">
+            <span class="text-[#00FF00]">{cert.name}</span>
+            <span class="text-gray-400"> :: </span>
+            <span>{cert.issuer}</span>
+            <span class="text-gray-400"> :: </span>
+            <span class="uppercase tracking-widest text-[#00FF00]">{cert.status}</span>
+          </p>
+          <p class="mt-1 text-xs text-gray-300">
+            {cert.title} <span class="text-gray-400">/</span> {cert.file}
+          </p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
