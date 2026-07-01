@@ -55,9 +55,9 @@ export const siteConfig = {
     secondaryCta: { label: 'View Operations', href: '#services' },
     proof: {
       stats: [
-        { value: , suffix: '+', label: '' },
-        { value: , suffix: '', label: '' },
-        { value: , suffix: '', label: '' },
+        { value: 0, suffix: '+', label: '' },
+        { value: 0, suffix: '', label: '' },
+        { value: 0, suffix: '', label: '' },
       ],
     },
   },
