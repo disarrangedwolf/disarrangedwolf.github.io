@@ -1,0 +1,29 @@
+{
+  "name": "security-expert-portfolio",
+  "private": true,
+  "version": "0.1.1",
+  "description": "NULLTRACE is a dark terminal-inspired Astro theme for security consultants and cybersecurity portfolios.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port=3000 --host=0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true});\"",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^6.4.6"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.1.14",
+    "typescript": "~5.8.2"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "vite": "^7.3.5"
+  }
+}
