@@ -3,28 +3,6 @@ export const siteConfig = {
     name: 'DisarrangedWolf',
     logoText: './DisarrangedWOlf',
   },
-  seo: {
-    title: 'DisarrangedWolf, LLC',
-    description:
-      'Fullstack Developer and Cyber Security Analyst in training',
-    author: 'DisarrangedWolf',
-    keywords:
-      'security consultant portfolio, penetration testing, incident response, cybersecurity, front stack, rear stack, full stack, developer',
-    siteName: 'DisarrangedWolf',
-    themeColor: '#0D1117',
-    twitterCard: 'summary',
-  },
-  jsonLd: {
-    type: 'ProfessionalService',
-    areaServed: 'Worldwide',
-    serviceType: [
-      'Penetration Testing',
-      'Incident Response',
-      'Security Auditing',
-      'Infrastructure Security',
-      'Full Stack Development',
-    ],
-  },
    contact: {
     email: 'wolf@disarrangedwolf.com',
   },
